@@ -2,6 +2,5 @@
 .vscode/
 .dockerignore
 .gitignore
-Dockerfile
 node_modules/
 README.md
