@@ -25,7 +25,7 @@ const AMISRender = ({ locale = 'zh-CN', schema, transform, session, ...rest }: A
   const _schema = schema.type ? schema : { type: 'page', ...schema }
 
   useEffect(() => {
-    return injectAmisCss()
+    // return injectAmisCss()
   }, [])
 
   return amisRender(
