@@ -246,19 +246,19 @@ pnpm dev
 - 前端镜像
 
 ```sh
-docker build --platform linux/amd64 -t fireboomapi/amis-admin_front:latest -f docker/front.Dockerfile .
+docker build --platform linux/amd64 -t fireboomapi/amis-admin_front:latest -f Dockerfile .
 ```
 
 - Fireboom 数据镜像
 
 ```sh
-docker build --platform linux/amd64 -t fireboomapi/amis-admin_fb-data:latest -f docker/fb-data.Dockerfile ./backend
+docker build --platform linux/amd64 -t fireboomapi/amis-admin_fb-data:latest -f backend/fb-data.Dockerfile ./backend
 ```
 
 - Fireboom golang 钩子镜像，第一次需要打包，后续更新依赖时才需要重新打包
 
 ```sh
-docker build --platform linux/amd64 -t fireboomapi/amis-admin_fb-hook:latest -f docker/fb-hook.Dockerfile ./backend
+docker build --platform linux/amd64 -t fireboomapi/amis-admin_fb-hook:latest -f backend/fb-hook.Dockerfile ./backend
 ```
 
 ### 推送
