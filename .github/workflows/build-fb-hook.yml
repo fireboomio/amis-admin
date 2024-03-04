@@ -27,6 +27,6 @@ jobs:
         with:
           context: "{{defaultContext}}:backend"
           platforms: linux/amd64,linux/arm64
-          file: ./docker/fb-hook.Dockerfile
+          file: fb-hook.Dockerfile
           push: true
           tags: fireboomapi/amis-admin_fb-hook:latest

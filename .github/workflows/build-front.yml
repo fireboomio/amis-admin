@@ -27,6 +27,6 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          file: ./docker/front.Dockerfile
+          file: Dockerfile
           push: true
           tags: fireboomapi/amis-admin_front:latest
