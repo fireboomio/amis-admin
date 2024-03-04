@@ -1,0 +1,7 @@
+mutation CreateOnePost($title: String!, $poster: String, $content: String!, $updatedAt: DateTime! @injectCurrentDateTime(format: ISO8601), $authorId: Int!, $categoryId: Int!) {
+  data: admin_createOnedemo_post(
+    data: {title: $title, poster: $poster, updatedAt: $updatedAt, content: $content, demo_post_author: {connect: {id: $authorId}}, demo_post_category: {connect: {id: $categoryId}}}
+  ) {
+    id
+  }
+}

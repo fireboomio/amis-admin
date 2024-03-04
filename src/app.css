@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.amis-scope {
+  overflow-x: initial !important;
+}
+
+/* stylelint-disable selector-class-pattern */
+.ae-FunctionEditorControl-func-header {
+  margin-bottom: 0 !important;
+}

@@ -1,0 +1,22 @@
+query MyQuery($skip: Int = 0, $take: Int = 10, $name: String, $code: String, $orderBy: [admin_admin_roleOrderByWithRelationInput] = [{createdAt: desc}]) {
+  data: admin_findManyadmin_role(
+    skip: $skip
+    take: $take
+    where: {name: {contains: $name}, code: {equals: $code}}
+    orderBy: $orderBy
+  ) {
+    createdAt
+    id
+    updatedAt
+    code
+    description
+    name
+  }
+  total: admin_aggregateadmin_role(
+    where: {name: {contains: $name}, code: {equals: $code}}
+  ) @transform(get: "_count.id") {
+    _count {
+      id
+    }
+  }
+}

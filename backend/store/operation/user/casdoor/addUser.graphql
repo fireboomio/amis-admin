@@ -1,0 +1,8 @@
+mutation MyQuery($countryCode: String = "CN", $name: String, $password: String, $phone: String, $avatar: String)  {
+  data: casdoor_addUser_post(
+    addUser_post_input_object: {phone: $phone, name: $name, password: $password, countryCode: $countryCode, avatar: $avatar}
+  ) {
+    msg
+    code
+  }
+}

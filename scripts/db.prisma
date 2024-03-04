@@ -1,0 +1,206 @@
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:123456@127.0.0.1:3306/oidc"
+}
+
+model admin_log {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @db.DateTime(0)
+  ip        String   @db.VarChar(36)
+  ua        String   @db.VarChar(256)
+  method    String   @db.VarChar(16)
+  path      String   @db.VarChar(512)
+  status    String?  @db.VarChar(36)
+  error     String?  @db.Text
+  userId    String?  @db.VarChar(36)
+  cost      Float?
+  requestId String   @db.VarChar(64)
+  body      String?  @db.Text
+  user      user?    @relation(fields: [userId], references: [user_id], onDelete: Cascade)
+
+  @@index([userId], map: "admin_log_userId_fkey")
+}
+
+model admin_menu {
+  id              Int               @id @default(autoincrement())
+  label           String            @db.VarChar(32)
+  path            String?           @db.VarChar(128)
+  icon            String?           @db.LongText
+  sort            Int
+  level           Int
+  createdAt       DateTime          @default(now()) @db.DateTime(0)
+  parentId        Int?
+  permission      String?           @db.VarChar(100)
+  type            String?           @db.Char(1)
+  updatedAt       DateTime          @db.DateTime(0)
+  code            String?           @db.VarChar(64)
+  schema          String?           @db.Text
+  visibleInMenu   Boolean           @default(true)
+  apis            String?
+  admin_menu_role admin_menu_role[]
+}
+
+model admin_menu_role {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now()) @db.DateTime(0)
+  menuId     Int
+  roleId     Int
+  admin_menu admin_menu @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  admin_role admin_role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([menuId, roleId])
+  @@index([menuId], map: "admin_menu_role_menuId_fkey")
+  @@index([roleId], map: "admin_menu_role_roleId_fkey")
+}
+
+model admin_role {
+  id              Int               @id @default(autoincrement())
+  code            String            @unique(map: "code") @db.VarChar(36)
+  name            String            @db.VarChar(64)
+  description     String?           @db.VarChar(255)
+  createdAt       DateTime          @default(now()) @db.DateTime(0)
+  updatedAt       DateTime          @db.DateTime(0)
+  admin_menu_role admin_menu_role[]
+  admin_role_user admin_role_user[]
+  demo_area_role  demo_area_role[]
+}
+
+model admin_role_user {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now()) @db.DateTime(0)
+  roleId     Int
+  userId     String     @db.VarChar(36)
+  admin_role admin_role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, userId])
+}
+
+model demo_area {
+  id             Int              @id @default(autoincrement())
+  createdAt      DateTime         @default(now()) @db.DateTime(0)
+  name           String           @db.VarChar(64)
+  address        String?          @db.Text
+  code           String           @unique(map: "demo_area_pk2") @db.VarChar(36)
+  parentCode     String           @default("") @db.VarChar(36)
+  demo_area_role demo_area_role[]
+}
+
+model demo_area_role {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now()) @db.DateTime(0)
+  areaId     Int
+  roleId     Int
+  demo_area  demo_area  @relation(fields: [areaId], references: [id], onDelete: Cascade)
+  admin_role admin_role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([areaId, roleId])
+  @@index([roleId], map: "demo_area_role_roleId_fkey")
+}
+
+model demo_post {
+  id                 Int                @id @default(autoincrement())
+  createdAt          DateTime           @default(now()) @db.DateTime(0)
+  updatedAt          DateTime           @db.DateTime(0)
+  title              String             @db.VarChar(64)
+  poster             String?            @db.VarChar(128)
+  content            String             @db.Text
+  userId             String             @db.VarChar(36)
+  categoryId         Int
+  demo_post_category demo_post_category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@index([categoryId], map: "demo_post_categoryId_fkey")
+}
+
+model demo_post_category {
+  id          Int         @id @default(autoincrement())
+  createdAt   DateTime    @default(now()) @db.DateTime(0)
+  updatedAt   DateTime    @db.DateTime(0)
+  name        String      @db.VarChar(64)
+  description String?     @db.VarChar(255)
+  demo_post   demo_post[]
+}
+
+model provider {
+  owner         String  @db.VarChar(100)
+  name          String  @unique(map: "UQE_provider_name") @db.VarChar(100)
+  created_time  String? @db.VarChar(100)
+  type          String? @db.VarChar(100)
+  client_id     String? @db.VarChar(100)
+  client_secret String? @db.VarChar(2000)
+  sign_name     String? @db.VarChar(100)
+  template_code String? @db.VarChar(100)
+
+  @@id([owner, name])
+}
+
+model test {
+  id   Int       @id
+  test test_test
+}
+
+model token {
+  id                  Int       @id @default(autoincrement())
+  user_id             String?   @db.VarChar(36)
+  token               String?   @db.LongText
+  expire_time         DateTime? @db.DateTime(0)
+  flush_time          DateTime? @db.DateTime(0)
+  refresh_token       String?   @db.LongText
+  refresh_expire_time DateTime? @db.DateTime(0)
+  banned              Boolean?
+  platform            String    @default("") @db.VarChar(36)
+}
+
+/// 用户表
+
+model user {
+  id            Int         @id @default(autoincrement())
+  user_id       String?     @unique(map: "user_unique_key") @db.VarChar(36)
+  created_at    DateTime?   @db.DateTime(0)
+  updated_at    DateTime?   @db.DateTime(0)
+  name          String      @db.VarChar(64)
+  /// 头像
+  avatar        String?     @db.VarChar(255)
+  password_type String?     @db.VarChar(100)
+  password_salt String?     @db.VarChar(100)
+  password      String?     @db.VarChar(100)
+  phone         String?     @db.Char(13)
+  country_code  String?     @db.VarChar(6)
+  wx_unionid    String?     @db.VarChar(100)
+  admin_log     admin_log[]
+}
+
+model usersocial {
+  id                Int      @id @default(autoincrement())
+  user_id           String?  @db.VarChar(36)
+  provider          String   @db.VarChar(64)
+  provider_user_id  String   @unique(map: "usersocial_pk") @db.VarChar(64)
+  provider_platform String?  @db.VarChar(64)
+  provider_unionid  String?  @db.VarChar(64)
+  created_at        DateTime @db.DateTime(0)
+}
+
+model userwx {
+  created_at String? @db.VarChar(100)
+  unionid    String  @db.VarChar(100)
+  openid     String  @db.VarChar(100)
+  platform   String? @db.VarChar(36)
+
+  @@id([unionid, openid])
+}
+
+model verificationrecord {
+  name         String   @id @db.VarChar(100)
+  created_time String?  @db.VarChar(100)
+  type         String?  @db.VarChar(10)
+  user         String   @db.VarChar(100)
+  provider     String   @db.VarChar(100)
+  receiver     String   @db.VarChar(100)
+  code         String   @db.VarChar(10)
+  time         BigInt
+  is_used      Boolean?
+}
+
+enum test_test {
+  Hello
+  World
+}

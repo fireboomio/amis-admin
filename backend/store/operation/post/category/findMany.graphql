@@ -1,0 +1,12 @@
+query MyQuery($name: String) {
+  options: admin_findManydemo_post_category(where: {name: {contains: $name}}) {
+    id
+    name
+    createdAt
+    updatedAt
+    description
+    postCount: _count @transform(get: "demo_post") {
+      demo_post
+    }
+  }
+}

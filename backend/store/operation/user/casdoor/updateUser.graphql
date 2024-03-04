@@ -1,0 +1,9 @@
+mutation MyQuery($userId: String, $avatar: String, $name: String, $password: String, $phone: String, $authorization: String! @fromHeader(name: "Authorization")) {
+  data: casdoor_updateUser_post(
+    updateUser_post_input_object: {userId: $userId, phone: $phone, name: $name, avatar: $avatar, password: $password}
+    Authorization: $authorization
+  ) {
+    code
+    msg
+  }
+}

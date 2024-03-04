@@ -1,0 +1,5 @@
+query MyQuery($codes: [String]!) @internalOperation {
+  data: admin_findManydemo_area(where: {code: {in: $codes}}) @transform(get: "name") {
+    name
+  }
+}

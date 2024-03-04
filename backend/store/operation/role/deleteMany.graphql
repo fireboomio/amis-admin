@@ -1,0 +1,5 @@
+mutation MyQuery($codes: [String]!) {
+  data: admin_deleteManyadmin_role(where: {code: {in: $codes}}) @transform(get: "count") {
+    count
+  }
+}

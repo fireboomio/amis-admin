@@ -1,0 +1,10 @@
+mutation MyQuery($data: [admin_admin_role_userCreateManyInput]!, $userId: String) @transaction {
+  deleted: admin_deleteManyadmin_role_user(
+    where: {userId: {equals: $userId}}
+  ) @transform(get: "count") {
+    count
+  }
+  created: admin_createManyadmin_role_user(data: $data) @transform(get: "count") {
+    count
+  }
+}

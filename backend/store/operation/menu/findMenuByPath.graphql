@@ -1,0 +1,6 @@
+query MyQuery($path: String!) {
+  data: admin_findFirstadmin_menu(where: {path: {equals: $path}}) {
+    id
+    schema
+  }
+}

@@ -1,0 +1,8 @@
+query MyQuery($parentCode: String!) @internalOperation {
+  data: admin_findFirstdemo_area(
+    where: {parentCode: {equals: $parentCode}}
+    orderBy: {code: desc}
+  ) @transform(get: "code") {
+    code
+  }
+}

@@ -1,0 +1,5 @@
+mutation DeleteManyPost ($ids: [Int]!) {
+	data: admin_deleteManydemo_post(where: {id:{in: $ids}}) {
+		count
+	}
+}

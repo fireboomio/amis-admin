@@ -1,0 +1,8 @@
+mutation MyQuery($dest: String!, $countryCode: String = "CN") {
+  data: casdoor_sendCode_post(
+    sendCode_post_input_object: {dest: $dest, countryCode: $countryCode}
+  ) {
+    msg
+    code
+  }
+}

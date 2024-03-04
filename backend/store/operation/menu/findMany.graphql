@@ -1,0 +1,31 @@
+query MyQuery($skip: Int = 0, $take: Int = 10, $path: String, $parentId: Int, $level: Int, $orderBy: [admin_admin_menuOrderByWithRelationInput] = [{sort: asc}]) {
+  data: admin_findManyadmin_menu(
+    skip: $skip
+    take: $take
+    where: {path: {contains: $path}, parentId: {equals: $parentId}, level: {equals: $level}}
+    orderBy: $orderBy
+  ) {
+    createdAt
+    icon
+    id
+    label
+    level
+    code
+    parentId
+    path
+    permission
+    sort
+    type
+    updatedAt
+    schema
+    apis
+    visibleInMenu
+  }
+  total: admin_aggregateadmin_menu(
+    where: {path: {contains: $path}, parentId: {equals: $parentId}, level: {equals: $level}}
+  ) @transform(get: "_count.id") {
+    _count {
+      id
+    }
+  }
+}

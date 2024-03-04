@@ -1,0 +1,234 @@
+$editor-default-color: #151b26; // 默认的字体色
+$editor-active-color: #2468f2;
+$editor-hover-color: #5086f5;
+$editor-border-color: #e8e9eb; // 默认的边框色
+$default-icon-color: #84868c; // 默认的icon颜色
+
+$active-bg-color: #e6f0ff; // 激活态的背景色
+$hover-bg-color: #f7f7f9; // 激活态的背景色
+
+$disabled-color: #b8babf; // 禁用文字颜色
+$disabled-bg-color: #f7f7f9; // 禁用背景颜色
+
+.amis-studio {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 510px;
+
+  .studio-header {
+    position: relative;
+    z-index: 1000;
+
+    /* box-shadow: 0 2px 7px 0 rgba(232,232,232,0.50); */
+    display: flex;
+    flex: 0 0 48px;
+    box-sizing: border-box;
+    background: #fff;
+    border-bottom: 1px solid $editor-border-color;
+
+    .editor-header-icon svg,
+    .shortcut-icon-btn svg {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+    }
+
+    .studio-title {
+      display: flex;
+      flex: 1 1 565px;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 15px;
+      font-weight: 500;
+      font-size: 16px;
+      font-family: PingFangSC-Medium;
+      letter-spacing: 0;
+      user-select: none;
+    }
+
+    .studio-view-mode-group-container {
+      display: flex;
+      flex: 0 1 150px;
+      align-items: center;
+      justify-content: center;
+
+      .studio-view-mode-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 32px;
+        font-weight: 400;
+        font-size: 14px;
+        font-family: PingFangSC-Regular;
+
+        /* color: #fff; */
+        letter-spacing: 0;
+        text-align: center;
+        background-color: #f2f2f4;
+        border-radius: 4px;
+
+        .studio-view-mode-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 24px;
+          padding: 0;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: transform ease-out 0.2s;
+          user-select: none;
+
+          svg {
+            color: $editor-default-color;
+          }
+
+          &:first-child {
+            margin-right: 12px;
+          }
+
+          &:hover > svg {
+            color: $editor-active-color;
+          }
+
+          &.is-active {
+            background: $editor-active-color;
+
+            svg {
+              color: #fff;
+            }
+
+            &:hover {
+              background: #5086f5;
+            }
+          }
+        }
+      }
+    }
+
+    .studio-header-actions {
+      display: flex;
+      flex: 1 1 565px;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 24px;
+      font-size: 12px;
+      white-space: nowrap;
+
+      .header-action-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-left: 18px;
+        cursor: pointer;
+        transition: transform ease-out 0.2s;
+        user-select: none;
+
+        > svg {
+          width: 16px;
+          fill: $editor-default-color;
+        }
+
+        &:hover > svg {
+          fill: $editor-active-color;
+        }
+
+        &.disabled {
+          cursor: not-allowed;
+
+          > svg {
+            fill: $disabled-color;
+          }
+        }
+
+        /* 历史记录icon单独处理 */
+        > svg.icon-editor-history {
+          color: $editor-default-color;
+
+          &:hover {
+            color: $editor-active-color;
+          }
+
+          &.disabled,
+          &.disabled:hover {
+            color: $disabled-color;
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      .header-action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 72px;
+        height: 32px;
+        margin-left: 8px;
+        padding: 0 16px;
+        color: #fff;
+        font-weight: 400;
+        font-size: 12px;
+        font-family: PingFangSC-Regular;
+        line-height: 20px;
+        background: $editor-active-color;
+        border-color: 1px solid $editor-active-color;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform ease-out 0.2s;
+        user-select: none;
+
+        &.preview-btn {
+          color: #151a26;
+          background: #fff;
+          border: 1px solid #dadbdd;
+          border-radius: 4px;
+
+          &:hover {
+            color: $editor-active-color;
+            background: #fff;
+            border-color: $editor-active-color;
+          }
+        }
+
+        &:hover {
+          color: #fff;
+          background: $editor-hover-color;
+          border-color: $editor-hover-color;
+        }
+
+        &.disabled {
+          color: $disabled-color;
+          background-color: $disabled-bg-color;
+          border-color: $disabled-bg-color;
+          cursor: not-allowed;
+        }
+
+        &.exit-btn {
+          color: #332e2e;
+          background-color: #fff;
+          border: 1px solid #ccc;
+
+          &:hover {
+            color: #fff;
+            background: #fa541c;
+            border-color: #fa541c;
+          }
+        }
+      }
+
+      .margin-left-space {
+        margin-left: 30px;
+      }
+    }
+  }
+
+  .studio-inner {
+    position: relative;
+    flex: 1 1 auto;
+    overflow: hidden auto;
+  }
+}

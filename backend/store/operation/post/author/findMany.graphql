@@ -1,0 +1,8 @@
+query MyQuery {
+  options: admin_findManydemo_post_author {
+    createdAt
+    id
+    name
+    email
+  }
+}

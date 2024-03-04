@@ -1,0 +1,19 @@
+{
+  "name": "admin",
+  "enabled": true,
+  "createTime": "2023-08-29T14:40:22.3026+08:00",
+  "updateTime": "2024-02-19T11:11:59.454391+08:00",
+  "deleteTime": "",
+  "cacheEnabled": true,
+  "kind": 4,
+  "customRest": null,
+  "customGraphql": null,
+  "customDatabase": {
+    "kind": 0,
+    "databaseUrl": {
+      "kind": 1,
+      "environmentVariableName": "DB_ADMIN"
+    },
+    "databaseAlone": null
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "casdoor",
+  "enabled": true,
+  "createTime": "2023-09-18T10:45:49.51069+08:00",
+  "updateTime": "2023-09-18T10:45:52.006846+08:00",
+  "deleteTime": "",
+  "cacheEnabled": false,
+  "kind": 1,
+  "customRest": {
+    "oasFilepath": "casdoor.json",
+    "baseUrl": "http://127.0.0.1:9825",
+    "headers": {
+      
+    }
+  },
+  "customGraphql": null,
+  "customDatabase": null
+}

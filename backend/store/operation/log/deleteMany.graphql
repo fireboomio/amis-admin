@@ -1,0 +1,5 @@
+mutation MyQuery($ids: [Int]!) {
+  data: admin_deleteManyadmin_log(where: {id: {in: $ids}}) @transform(get: "count") {
+    count
+  }
+}

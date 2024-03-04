@@ -1,0 +1,38 @@
+{
+  "enabled": true,
+  "title": "",
+  "remark": "",
+  "createTime": "2023-06-25 05:44:48Z",
+  "updateTime": "2023-12-25T16:45:28.071577+08:00",
+  "deleteTime": "",
+  "path": "api/queryRaw",
+  "engine": 0,
+  "hooksConfiguration": {
+    "preResolve": true,
+    "postResolve": false,
+    "mutatingPreResolve": false,
+    "mutatingPostResolve": false,
+    "customResolve": false,
+    "mockResolve": null,
+    "httpTransportOnRequest": false,
+    "httpTransportOnResponse": false,
+    "onConnectionInit": false,
+    "httpTransportBeforeRequest": false,
+    "httpTransportAfterResponse": false
+  },
+  "rateLimit": null,
+  "configCustomized": false,
+  "cacheConfig": {
+    "enabled": false,
+    "maxAge": 600,
+    "public": false,
+    "staleWhileRevalidate": 30
+  },
+  "liveQueryConfig": {
+    "enabled": false,
+    "pollingIntervalSeconds": 10
+  },
+  "authenticationConfig": {
+    "authRequired": false
+  }
+}

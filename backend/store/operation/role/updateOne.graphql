@@ -1,0 +1,8 @@
+mutation MyQuery($id: Int!, $code: String, $createManyMenuRole: admin_admin_menu_roleCreateManyAdmin_roleInputEnvelope, $deleteManyMenuRoleId: Int, $updatedAt: DateTime! @injectCurrentDateTime(format: ISO8601), $name: String, $description: String) {
+  data: admin_updateOneadmin_role(
+    data: {code: {set: $code}, updatedAt: {set: $updatedAt}, name: {set: $name}, description: {set: $description}, admin_menu_role: {deleteMany: {roleId: {equals: $deleteManyMenuRoleId}}, createMany: $createManyMenuRole}}
+    where: {id: $id}
+  ) {
+    id
+  }
+}

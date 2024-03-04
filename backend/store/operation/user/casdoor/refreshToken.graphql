@@ -1,0 +1,13 @@
+mutation RefreshToken($refreshToken: String!, $platform: String! @fromHeader(name: "X-Platform")) {
+  data: casdoor_refreshToken_post(
+    refreshToken_post_input_object: {refresh_token: $refreshToken, platform: $platform, exclusive: false}
+  ) {
+    data {
+      accessToken
+      expireIn
+      refreshToken
+    }
+    msg
+    code
+  }
+}

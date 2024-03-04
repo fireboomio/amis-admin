@@ -1,0 +1,31 @@
+query MyQuery($id: Int!) {
+  data: admin_findUniqueadmin_role(where: {id: $id}) {
+    code
+    createdAt
+    id
+    updatedAt
+    description
+    name
+    menus: admin_menu_role @transform(get: "admin_menu") {
+      admin_menu {
+        code
+        createdAt
+        icon
+        id
+        label
+        level
+        parentId
+        path
+        permission
+        schema
+        sort
+        type
+        updatedAt
+        apis
+      }
+    }
+    userIds: admin_role_user @transform(get: "userId") {
+      userId
+    }
+  }
+}

@@ -1,0 +1,12 @@
+mutation MyQuery($code: String! @internal, $address: String @internal, $parentCode: String, $name: String!) {
+  data: admin_createOnedemo_area(
+    data: {name: $name, code: $code, parentCode: $parentCode, address: $address}
+  ) {
+    code
+    address
+    createdAt
+    id
+    name
+    parentCode
+  }
+}

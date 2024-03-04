@@ -1,0 +1,6 @@
+query MyQuery {
+  data: system_operation_listPublic_get {
+    path
+    title
+  }
+}

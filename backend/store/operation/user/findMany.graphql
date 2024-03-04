@@ -1,0 +1,36 @@
+query MyQuery($skip: Int = 0, $take: Int = 10, $name: String, $phone: String, $userId: String @internal, $orderBy: [admin_userOrderByWithRelationInput] = [{created_at: desc}]) {
+  data: admin_findManyuser(
+    skip: $skip
+    take: $take
+    where: {name: {contains: $name}, phone: {contains: $phone}}
+    orderBy: $orderBy
+  ) {
+    id
+    name
+    password
+    avatar
+    countryCode: country_code
+    createdAt: created_at
+    passwordSalt: password_salt
+    passwordType: password_type
+    phone
+    userId: user_id @export(as: "userId")
+    wxUnionid: wx_unionid
+    roles: _join @transform(get: "admin_findManyadmin_role") {
+      admin_findManyadmin_role(
+        where: {admin_role_user: {some: {userId: {equals: $userId}}}}
+      ) {
+        code
+        name
+        description
+      }
+    }
+  }
+  total: admin_aggregateuser(
+    where: {name: {contains: $name}, phone: {contains: $phone}}
+  ) @transform(get: "_count.id") {
+    _count {
+      id
+    }
+  }
+}

@@ -1,0 +1,7 @@
+mutation MyQuery($code: String!, $name: String!, $description: String = "", $updatedAt: DateTime! @injectCurrentDateTime(format: ISO8601)) {
+  data: admin_createOneadmin_role(
+    data: {code: $code, name: $name, updatedAt: $updatedAt, description: $description}
+  ) {
+    id
+  }
+}

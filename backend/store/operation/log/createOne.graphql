@@ -1,0 +1,7 @@
+mutation MyQuery($ip: String!, $ua: String!, $method: String!, $path: String!, $status: String, $body: String, $userId: String, $cost: Float, $requestId: String!, $error: String) @internalOperation {
+  data: admin_createOneadmin_log(
+    data: {ip: $ip, ua: $ua, method: $method, path: $path, body: $body, status: $status, user: {connect: {user_id: $userId}}, cost: $cost, requestId: $requestId, error: $error}
+  ) {
+    id
+  }
+}

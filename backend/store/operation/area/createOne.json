@@ -1,0 +1,36 @@
+{
+  "enabled": true,
+  "title": "",
+  "remark": "",
+  "createTime": "2023-12-31T20:45:20.651788+08:00",
+  "updateTime": "2023-12-31T21:11:15.041728+08:00",
+  "deleteTime": "",
+  "path": "area/createOne",
+  "engine": 0,
+  "hooksConfiguration": {
+    "preResolve": false,
+    "postResolve": false,
+    "mutatingPreResolve": true,
+    "mutatingPostResolve": false,
+    "customResolve": false,
+    "mockResolve": null,
+    "httpTransportOnRequest": false,
+    "httpTransportOnResponse": false,
+    "onConnectionInit": false,
+    "httpTransportBeforeRequest": false,
+    "httpTransportAfterResponse": false
+  },
+  "rateLimit": null,
+  "configCustomized": false,
+  "cacheConfig": {
+    "enabled": false,
+    "maxAge": 120,
+    "public": false,
+    "staleWhileRevalidate": 30
+  },
+  "liveQueryConfig": {
+    "enabled": false,
+    "pollingIntervalSeconds": 10
+  },
+  "authenticationConfig": null
+}

@@ -1,0 +1,13 @@
+mutation MyQuery($code: String, $password: String, $phone: String, $platform: String, $username: String, $loginType: casdoor_login_post_input_object_loginType_enum!) {
+  data: casdoor_login_post(
+    login_post_input_object: {phone: $phone, code: $code, password: $password, username: $username, platform: $platform, exclusive: false, loginType: $loginType}
+  ) {
+    msg
+    code
+    data {
+      accessToken
+      expireIn
+      refreshToken
+    }
+  }
+}

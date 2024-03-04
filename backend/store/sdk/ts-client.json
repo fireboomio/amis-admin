@@ -1,0 +1,21 @@
+{
+  "name": "ts-client",
+  "enabled": true,
+  "type": "client",
+  "language": "typescript",
+  "extension": ".ts",
+  "gitUrl": "https://code.100ai.com.cn/fireboomio/sdk-template_ts-client.git",
+  "gitBranch": "new",
+  "gitCommitHash": "0b4a0d15427f98331ae47f858f3e3960e2b31150",
+  "outputPath": "../src/api",
+  "codePackage": "",
+  "upperFirst": false,
+  "createTime": "2023-12-19T14:32:28.867557+08:00",
+  "updateTime": "2024-01-16T15:14:16.457437+08:00",
+  "deleteTime": "",
+  "icon": "https://code.100ai.com.cn/fireboomio/files/raw/branch/main/icons/typescript.svg",
+  "title": "Typescript client",
+  "author": "fireboom",
+  "version": "latest",
+  "description": "Base typescript client"
+}

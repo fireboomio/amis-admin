@@ -1,0 +1,3 @@
+mutation MyQuery($query: String!, $parameters: JSON) {
+  data: admin_executeRaw(query: $query, parameters: $parameters)
+}

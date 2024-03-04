@@ -1,0 +1,26 @@
+{
+  "enabled": true,
+  "title": "",
+  "remark": "",
+  "createTime": "2023-08-01 07:09:34Z",
+  "updateTime": "2023-12-21T13:49:35.253382+08:00",
+  "deleteTime": "",
+  "path": "post/category/createOne",
+  "engine": 0,
+  "hooksConfiguration": null,
+  "rateLimit": null,
+  "configCustomized": false,
+  "cacheConfig": {
+    "enabled": false,
+    "maxAge": 600,
+    "public": false,
+    "staleWhileRevalidate": 30
+  },
+  "liveQueryConfig": {
+    "enabled": false,
+    "pollingIntervalSeconds": 0
+  },
+  "authenticationConfig": {
+    "authRequired": false
+  }
+}

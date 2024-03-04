@@ -1,0 +1,76 @@
+{
+  "api": {
+    "engineConfiguration": null,
+    "enableGraphqlEndpoint": false,
+    "operations": null,
+    "corsConfiguration": null,
+    "authenticationConfig": null,
+    "s3UploadConfiguration": [
+      {
+        "name": "tengxunyun",
+        "endpoint": {
+          "kind": 0,
+          "staticVariableContent": "cos.ap-nanjing.myqcloud.com/"
+        },
+        "accessKeyID": null,
+        "secretAccessKey": null,
+        "bucketName": {
+          "kind": 0,
+          "staticVariableContent": "test-1314985928"
+        },
+        "bucketLocation": null,
+        "useSSL": true,
+        "uploadProfiles": null
+      }
+    ],
+    "allowedHostNames": null,
+    "webhooks": null,
+    "serverOptions": {
+      "serverUrl": {
+        "kind": 1,
+        "environmentVariableName": "FB_SERVER_URL"
+      },
+      "listen": {
+        "host": {
+          "kind": 1,
+          "environmentVariableName": "FB_SERVER_LISTEN_HOST"
+        },
+        "port": {
+          "kind": 1,
+          "environmentVariableName": "FB_SERVER_LISTEN_PORT"
+        }
+      },
+      "logger": null
+    },
+    "nodeOptions": {
+      "nodeUrl": {
+        "kind": 1,
+        "environmentVariableName": "FB_API_INTERNAL_URL"
+      },
+      "publicNodeUrl": {
+        "kind": 1,
+        "environmentVariableName": "FB_API_PUBLIC_URL"
+      },
+      "listen": {
+        "host": {
+          "kind": 0,
+          "staticVariableContent": "0.0.0.0",
+          "environmentVariableName": "FB_API_LISTEN_HOST"
+        },
+        "port": {
+          "kind": 0,
+          "staticVariableContent": "9991",
+          "environmentVariableName": "FB_API_LISTEN_PORT"
+        }
+      },
+      "logger": {
+        "level": {
+          "kind": 1,
+          "environmentVariableName": "FB_LOG_LEVEL"
+        }
+      },
+      "defaultRequestTimeoutSeconds": 0
+    },
+    "invalidOperationNames": null
+  }
+}

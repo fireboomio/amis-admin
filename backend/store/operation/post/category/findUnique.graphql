@@ -1,0 +1,19 @@
+query MyQuery($id: Int!) {
+  data: admin_findUniquedemo_post_category(where: {id: $id}) {
+    id
+    updatedAt
+    description
+    name
+    createdAt
+    posts: demo_post {
+      categoryId
+      content
+      createdAt
+      id
+      poster
+      title
+      updatedAt
+      authorId
+    }
+  }
+}

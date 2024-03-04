@@ -1,0 +1,8 @@
+mutation MyQuery($id: Int!, $updatedAt: DateTime! @injectCurrentDateTime(format: ISO8601), $title: String, $poster: String, $content: String, $authorId: Int, $categoryId: Int) {
+  data: admin_updateOnedemo_post(
+    data: {updatedAt: {set: $updatedAt}, title: {set: $title}, poster: {set: $poster}, content: {set: $content}, demo_post_author: {connect: {id: $authorId}}, demo_post_category: {connect: {id: $categoryId}}}
+    where: {id: $id}
+  ) {
+    id
+  }
+}

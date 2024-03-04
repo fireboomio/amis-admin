@@ -1,0 +1,3 @@
+mutation QueryRaw($query: String!, $parameters: JSON) {
+  data: admin_queryRaw(query: $query, parameters: $parameters)
+}

@@ -1,0 +1,5 @@
+mutation MyQuery($userIds: [String]!) {
+  data: admin_deleteManyuser(where: {user_id: {in: $userIds}}) @transform(get: "count") {
+    count
+  }
+}

@@ -1,0 +1,8 @@
+mutation MyQuery($name: String!, $updatedAt: DateTime! @injectCurrentDateTime(format: ISO8601)) {
+  data: admin_createOnedemo_post_category(
+    data: {name: $name, updatedAt: $updatedAt}
+  ) {
+    id
+    name
+  }
+}

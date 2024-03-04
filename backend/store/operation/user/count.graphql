@@ -1,0 +1,7 @@
+query MyQuery {
+	data: admin_aggregateuser @transform(get: "count.id") {
+		count: _count {
+			id
+		}
+	}
+}

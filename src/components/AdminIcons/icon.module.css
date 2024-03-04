@@ -1,0 +1,9 @@
+.placeholder {
+  width: 32px;
+  height: 32px;
+  color: var(--ant-button-default-color);
+  background: var(--ant-button-default-bg);
+  border: 1px solid rgb(217 217 217);
+  border-radius: var(--ant-border-radius);
+  box-shadow: var(--ant-button-default-shadow);
+}

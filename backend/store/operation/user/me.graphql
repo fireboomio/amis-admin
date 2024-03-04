@@ -1,0 +1,46 @@
+query MyQuery(
+  $userId: String! @fromClaim(name: USERID),
+  $includeAreaCodesPermission: Boolean = true @fromClaim(name: CUSTOM, customJsonPath: ["permission", "areacodes"], removeVariableIfNoneMatch: {type: Header, name: "X-Permission"}),
+  $now: DateTime @injectCurrentDateTime(format: ISO8601, offset: {value: 100, unit: YEAR}) @fromClaim(name: ROLES,  removeVariableIfNoneMatch: {type: Environment, name: "SUPER_ROLE_CODE"})
+) {
+  data: admin_findFirstuser(where: {user_id: {equals: $userId}}) {
+    id
+    name
+    avatar
+    userId: user_id
+    roles: _join @transform(get: "admin_findManyadmin_role") {
+      admin_findManyadmin_role(
+        where: {admin_role_user: {some: {userId: {equals: $userId}}}}
+      ) @transform(get: "code") {
+        code
+      }
+    }
+    areaCodes: _join @transform(get: "admin_findManydemo_area_role.demo_area.code") @include(if: $includeAreaCodesPermission) {
+      admin_findManydemo_area_role(
+        where: {admin_role: {is: {admin_role_user: {some: {userId: {equals: $userId}}}}}}
+      ) {
+        demo_area {
+          code
+        }
+      }
+    }
+    menus: _join @transform(get: "admin_findManyadmin_menu") {
+      admin_findManyadmin_menu(
+        where: {OR: [{admin_menu_role: {some: {admin_role: {is: {admin_role_user: {some: {userId: {equals: $userId}}}}}}}}, {createdAt: {lte: $now}}]}
+      ) {
+        icon
+        id
+        label
+        level
+        code
+        parentId
+        path
+        permission
+        sort
+        type
+        apis
+        visibleInMenu
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+query MyQuery($skip: Int = 0, $take: Int = 10, $content: String, $title: String, $authorId: Int, $categoryId: Int, $email: String, $likesMin: Int, $likesMax: Int, $viewsMin: Int, $viewsMax: Int,$createStartDate: DateTime, $createEndDate: DateTime, $orderBy: admin_demo_postOrderByWithRelationInput = {createdAt: desc}) {
+  data: admin_findManydemo_post(
+    skip: $skip
+    take: $take
+    where: {content: {contains: $content}, title: {contains: $title}, demo_post_category: {is: {id: {equals: $categoryId}}}, demo_post_author: {is: {id: {equals: $authorId}, email: {contains: $email}}}, likes: {lte: $likesMax, gte: $likesMin}, views: {gte: $viewsMin, lte: $viewsMax}, createdAt: {gte: $createStartDate, lte: $createEndDate}}
+    orderBy: [$orderBy]
+  ) {
+    createdAt
+    id
+    updatedAt
+    content
+    categoryId
+    poster
+    title
+    authorId
+    author: demo_post_author {
+      id
+      name
+      email
+    }
+    category: demo_post_category {
+      id
+      name
+    }
+    likes
+    views
+  }
+   total: admin_aggregatedemo_post (
+    where: {content: {contains: $content}, title: {contains: $title}, demo_post_category: {is: {id: {equals: $categoryId}}}, demo_post_author: {is: {id: {equals: $authorId}, email: {contains: $email}}}, likes: {lte: $likesMax, gte: $likesMin}, views: {gte: $viewsMin, lte: $viewsMax}, createdAt: {gte: $createStartDate, lte: $createEndDate}}
+  ) @transform(get: "_count.id") {
+    _count {
+      id
+    }
+  }
+}

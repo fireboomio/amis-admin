@@ -1,0 +1,7 @@
+mutation MyQuery($icon: String, $label: String!, $level: Int! = 1, $code: String, $parentId: Int, $path: String!, $permission: String, $sort: Int = 1, $type: String, $apis: String, $updatedAt: DateTime! @injectCurrentDateTime(format: ISO8601), $visibleInMenu: Boolean = true) {
+  data: admin_createOneadmin_menu(
+    data: {label: $label, sort: $sort, level: $level, updatedAt: $updatedAt, icon: $icon, code: $code, parentId: $parentId, path: $path, permission: $permission, type: $type, visibleInMenu: $visibleInMenu, apis: $apis}
+  ) {
+    id
+  }
+}

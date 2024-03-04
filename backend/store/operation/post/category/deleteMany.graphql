@@ -1,0 +1,5 @@
+mutation MyQuery($ids: [Int]!) {
+  data: admin_deleteManydemo_post_category(where: {id: {in: $ids}}) {
+    count
+  }
+}

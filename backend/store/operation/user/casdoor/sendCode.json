@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "title": "",
+  "remark": "",
+  "createTime": "2023-09-15T10:58:17.625814392+08:00",
+  "updateTime": "2023-09-15T10:58:26.18403351+08:00",
+  "deleteTime": "",
+  "path": "user/casdoor/sendCode",
+  "engine": 0,
+  "hooksConfiguration": null,
+  "configCustomized": false,
+  "cacheConfig": {
+    "enabled": false,
+    "maxAge": 120,
+    "public": false,
+    "staleWhileRevalidate": 30
+  },
+  "liveQueryConfig": {
+    "enabled": false,
+    "pollingIntervalSeconds": 10
+  },
+  "authenticationConfig": null
+}

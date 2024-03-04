@@ -1,0 +1,35 @@
+{
+  "cacheConfig": {
+    "enabled": false,
+    "maxAge": 600,
+    "public": false,
+    "staleWhileRevalidate": 30
+  },
+  "liveQueryConfig": {
+    "enabled": false,
+    "pollingIntervalSeconds": 3
+  },
+  "authenticationConfigs": {
+    "1": {
+      "authRequired": false
+    },
+    "2": {
+      "authRequired": false
+    },
+    "0": {
+      "authRequired": false
+    }
+  },
+  "apiAuthenticationHooks": {
+    "postAuthentication": false,
+    "mutatingPostAuthentication": true
+  },
+  "globalHttpTransportHooks": {
+    "onRequest": false,
+    "onResponse": false,
+    "beforeRequest": false,
+    "beforeOriginRequest": true,
+    "afterOriginResponse": true,
+    "onOriginResponse": false
+  }
+}

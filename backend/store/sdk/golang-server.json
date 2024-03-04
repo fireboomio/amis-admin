@@ -1,0 +1,21 @@
+{
+  "name": "golang-server",
+  "enabled": true,
+  "type": "server",
+  "language": "golang",
+  "extension": ".go",
+  "gitUrl": "https://git.fireboom.io/fireboomio/sdk-template_go-server.git",
+  "gitBranch": "V2.0",
+  "gitCommitHash": "a7ba3c72d9b178c4bbe1db3a1460edd43ff9bf24",
+  "outputPath": "./custom-go",
+  "codePackage": "",
+  "upperFirst": false,
+  "createTime": "2024-01-23T15:22:08.262409+08:00",
+  "updateTime": "2024-01-23T16:11:55.204713+08:00",
+  "deleteTime": "",
+  "icon": "https://code.100ai.com.cn/fireboomio/files/raw/branch/main/icons/golang.svg",
+  "title": "Golang server",
+  "author": "fireboom",
+  "version": "latest",
+  "description": "Golang hook server SDK template for fireboom"
+}
