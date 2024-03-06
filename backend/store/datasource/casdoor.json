@@ -10,7 +10,10 @@
     "oasFilepath": "casdoor.json",
     "baseUrl": "http://127.0.0.1:9825",
     "headers": {
-      
+    },
+    "responseExtractor": {
+      "statusCodeJsonpath": "code",
+      "errorMessageJsonpath": "msg"
     }
   },
   "customGraphql": null,
