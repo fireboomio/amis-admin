@@ -65,7 +65,7 @@ const AMISStudio = ({ schema: originSchema, onSave, onExit }: AMISStudioProps) =
   }
 
   useEffect(() => {
-    return injectAmisCss()
+    // return injectAmisCss()
   }, [])
 
   return (

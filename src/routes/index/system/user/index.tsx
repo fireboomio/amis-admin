@@ -152,11 +152,13 @@ const UserPage = () => {
             const { error } = await client.mutate({
               operationName: 'user/casdoor/updateUser',
               input: {
-                password: values.password
+                password: values.password,
+                userId: selectedUserId
               }
             })
             if (!error) {
               message.success('修改用户密码成功')
+              return true
             } else {
               message.error('修改用户密码失败')
             }
@@ -189,7 +191,7 @@ const UserPage = () => {
     { label: string; value: string; code: string }[] | undefined
   >()
   const [selectedRoles, setSelectedRoles] = useState<string[] | undefined>()
-  const [seletedUserId, setSelectedUserId] = useState<string | undefined>()
+  const [selectedUserId, setSelectedUserId] = useState<string | undefined>()
   const actionRef = useRef<ActionType>()
   const [avatar, setAvatar] = useState<string | undefined>()
 
@@ -246,7 +248,7 @@ const UserPage = () => {
       files: fileList.files,
       appendEndpoint: true,
       provider: 'tengxunyun',
-      directory: `avatar/${seletedUserId}`
+      directory: `avatar/${selectedUserId}`
     })
     if (resp.fileKeys.length) {
       const avatar = resp.fileKeys[0]
@@ -319,7 +321,7 @@ const UserPage = () => {
                     name: values.name,
                     phone: values.phone,
                     avatar: avatar,
-                    userId: seletedUserId
+                    userId: selectedUserId
                   }
                 })
                 if (!error) {
@@ -427,13 +429,13 @@ const UserPage = () => {
                 ?.map(role2 => role2.value)
               console.log(roles, 'roles')
               const inputData = roles?.map((item: string) => ({
-                userId: seletedUserId,
+                userId: selectedUserId,
                 roleId: parseInt(item)
               }))
               const { error } = await client.mutate({
                 operationName: 'role/user/updateMany',
                 input: {
-                  userId: seletedUserId,
+                  userId: selectedUserId,
                   data: inputData! as admin_admin_role_userCreateManyInput[]
                 }
               })
