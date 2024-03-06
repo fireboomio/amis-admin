@@ -19,7 +19,7 @@ async function isUpdateValid(buildTimeUrl, localBinPath) {
 }
 
 async function isOidcNeedUpdate() {
-  return isUpdateValid('https://yudai-bin.fireboom.io/build/build_time', oidcBinPath)
+  return isUpdateValid('https://yudai-bin.fireboom.io/build-env/build_time', oidcBinPath)
 }
 
 async function isFireboomNeedUpdate() {
