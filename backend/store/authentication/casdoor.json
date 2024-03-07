@@ -5,8 +5,8 @@
   "updateTime": "2023-09-14T17:04:52.827399338+08:00",
   "deleteTime": "",
   "issuer": {
-    "kind": 0,
-    "staticVariableContent": "http://localhost:9825"
+    "kind": 1,
+    "environmentVariableName": "OIDC_API_URL"
   },
   "oidcConfigEnabled": false,
   "oidcConfig": {
@@ -21,15 +21,7 @@
   },
   "jwksProviderEnabled": true,
   "jwksProvider": {
-    "jwksUrl": {
-      "kind": 0,
-      "staticVariableContent": "http://localhost:9825/.well-known/jwks.json"
-    },
     "jwksJson": null,
-    "userInfoEndpoint": {
-      "kind": 0,
-      "staticVariableContent": "http://localhost:9825/api/userinfo"
-    },
     "userInfoCacheTtlSeconds": 0
   }
 }

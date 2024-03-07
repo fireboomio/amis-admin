@@ -8,7 +8,10 @@
   "kind": 1,
   "customRest": {
     "oasFilepath": "casdoor.json",
-    "baseUrl": "http://127.0.0.1:9825",
+    "baseUrl": {
+      "kind": 1,
+      "environmentVariableName": "OIDC_API_URL"
+    },
     "headers": {
     },
     "responseExtractor": {
