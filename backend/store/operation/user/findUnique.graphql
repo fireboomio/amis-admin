@@ -1,4 +1,4 @@
-query MyQuery($userId: String!, $unionid: String @internal) {
+query MyQuery($userId: String!) {
   data: admin_findFirstuser(where: {user_id: {equals: $userId}}) {
     id
     name
