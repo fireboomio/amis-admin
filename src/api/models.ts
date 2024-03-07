@@ -565,7 +565,6 @@ export type admin_userOrderByWithRelationInput = {
   phone?: Admin_SortOrder
   updated_at?: Admin_SortOrder
   user_id?: Admin_SortOrder
-  wx_unionid?: Admin_SortOrder
 }
 export type api__executeRawInput = {
   parameters?: any
@@ -1093,6 +1092,7 @@ export type user__casdoor__addUserInput = {
   phone?: string
 }
 export type user__casdoor__addUserResponseData = {
+  /** Add a new user */
   data?: user__casdoor__addUserResponseData_data
 }
 export type user__casdoor__addUserResponseData_data = {
@@ -1108,7 +1108,7 @@ export type user__casdoor__loginInput = {
   username?: string
 }
 export type user__casdoor__loginResponseData = {
-  /** UserResponse */
+  /** Login user */
   data?: user__casdoor__loginResponseData_data
 }
 export type user__casdoor__loginResponseData_data = {
@@ -1125,7 +1125,7 @@ export type user__casdoor__refreshTokenInput = {
   refreshToken: string
 }
 export type user__casdoor__refreshTokenResponseData = {
-  /** UserResponse */
+  /** Refresh auth token */
   data?: user__casdoor__refreshTokenResponseData_data
 }
 export type user__casdoor__refreshTokenResponseData_data = {
@@ -1145,6 +1145,7 @@ export type user__casdoor__sendCodeInput = {
   dest: string
 }
 export type user__casdoor__sendCodeResponseData = {
+  /** Send verification code */
   data?: user__casdoor__sendCodeResponseData_data
 }
 export type user__casdoor__sendCodeResponseData_data = {
@@ -1159,6 +1160,7 @@ export type user__casdoor__updateUserInput = {
   userId?: string
 }
 export type user__casdoor__updateUserResponseData = {
+  /** Update an existing user */
   data?: user__casdoor__updateUserResponseData_data
 }
 export type user__casdoor__updateUserResponseData_data = {
@@ -1187,19 +1189,17 @@ export type user__findManyResponseData = {
   total: number
 }
 export type user__findManyResponseData_data = {
-  /** 头像 */
   avatar?: string
   countryCode?: string
-  createdAt?: string
+  createdAt: string
   id: number
-  name: string
+  name?: string
   password?: string
   passwordSalt?: string
   passwordType?: string
   phone?: string
   roles: user__findManyResponseData_data_roles[]
-  userId?: string
-  wxUnionid?: string
+  userId: string
 }
 export type user__findManyResponseData_data_roles = {
   code: string
@@ -1213,26 +1213,17 @@ export type user__findUniqueResponseData = {
   data?: user__findUniqueResponseData_data
 }
 export type user__findUniqueResponseData_data = {
-  /** 头像 */
   avatar?: string
   countryCode?: string
-  createdAt?: string
+  createdAt: string
   id: number
-  name: string
+  name?: string
   password?: string
   passwordSalt?: string
   passwordType?: string
   phone?: string
   roles: string[]
-  userId?: string
-  wxUnionid?: string
-  wxs: user__findUniqueResponseData_data_wxs[]
-}
-export type user__findUniqueResponseData_data_wxs = {
-  createdAt?: string
-  openid: string
-  platform?: string
-  unionid: string
+  userId: string
 }
 export type user__meInput = {}
 export type user__meResponseData = {
@@ -1240,13 +1231,12 @@ export type user__meResponseData = {
 }
 export type user__meResponseData_data = {
   areaCodes: string[]
-  /** 头像 */
   avatar?: string
   id: number
   menus: user__meResponseData_data_menus[]
-  name: string
+  name?: string
   roles: string[]
-  userId?: string
+  userId: string
 }
 export type user__meResponseData_data_menus = {
   apis?: string

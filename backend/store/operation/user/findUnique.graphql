@@ -10,22 +10,11 @@ query MyQuery($userId: String!, $unionid: String @internal) {
     passwordType: password_type
     phone
     userId: user_id
-    wxUnionid: wx_unionid @export(as: "unionid")
     roles: _join @transform(get: "admin_findManyadmin_role.code") {
       admin_findManyadmin_role(
         where: {admin_role_user: {some: {userId: {equals: $userId}}}}
       ) {
         code
-      }
-    }
-    wxs: _join @transform(get: "admin_findManyuserwx") {
-      admin_findManyuserwx(
-        where: {unionid: {equals: $unionid}}
-      ) {
-        unionid
-        openid
-        platform
-        createdAt: created_at
       }
     }
   }

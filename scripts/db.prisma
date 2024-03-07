@@ -133,11 +133,6 @@ model provider {
   @@id([owner, name])
 }
 
-model test {
-  id   Int       @id
-  test test_test
-}
-
 model token {
   id                  Int       @id @default(autoincrement())
   user_id             String?   @db.VarChar(36)
@@ -198,9 +193,4 @@ model verificationrecord {
   code         String   @db.VarChar(10)
   time         BigInt
   is_used      Boolean?
-}
-
-enum test_test {
-  Hello
-  World
 }

@@ -386,7 +386,6 @@ type Admin_userOrderByWithRelationInput struct {
     Phone Admin_SortOrder `json:"phone,omitempty"`
     Updated_at Admin_SortOrder `json:"updated_at,omitempty"`
     User_id Admin_SortOrder `json:"user_id,omitempty"`
-    Wx_unionid Admin_SortOrder `json:"wx_unionid,omitempty"`
 }
 
 type Api__executeRawInput struct {
@@ -1259,9 +1258,11 @@ Phone string `json:"phone,omitempty"`
 }
 
 type User__casdoor__addUserResponseData struct {
-    Data User__casdoor__addUserResponseData_data `json:"data,omitempty"`
+    /* Add a new user */
+Data User__casdoor__addUserResponseData_data `json:"data,omitempty"`
 }
-
+// User__casdoor__addUserResponseData_data
+/*  Add a new user */
 type User__casdoor__addUserResponseData_data struct {
     Code int64 `json:"code,omitempty"`
     Msg string `json:"msg,omitempty"`
@@ -1286,11 +1287,11 @@ type User__casdoor__loginInternalInput struct {
 }
 
 type User__casdoor__loginResponseData struct {
-    /* UserResponse */
+    /* Login user */
 Data User__casdoor__loginResponseData_data `json:"data,omitempty"`
 }
 // User__casdoor__loginResponseData_data
-/*  UserResponse */
+/*  Login user */
 type User__casdoor__loginResponseData_data struct {
     Code int64 `json:"code,omitempty"`
     Data User__casdoor__loginResponseData_data_data `json:"data,omitempty"`
@@ -1313,11 +1314,11 @@ type User__casdoor__refreshTokenInternalInput struct {
 }
 
 type User__casdoor__refreshTokenResponseData struct {
-    /* UserResponse */
+    /* Refresh auth token */
 Data User__casdoor__refreshTokenResponseData_data `json:"data,omitempty"`
 }
 // User__casdoor__refreshTokenResponseData_data
-/*  UserResponse */
+/*  Refresh auth token */
 type User__casdoor__refreshTokenResponseData_data struct {
     Code int64 `json:"code,omitempty"`
     Data User__casdoor__refreshTokenResponseData_data_data `json:"data,omitempty"`
@@ -1345,9 +1346,11 @@ Dest string `json:"dest"`
 }
 
 type User__casdoor__sendCodeResponseData struct {
-    Data User__casdoor__sendCodeResponseData_data `json:"data,omitempty"`
+    /* Send verification code */
+Data User__casdoor__sendCodeResponseData_data `json:"data,omitempty"`
 }
-
+// User__casdoor__sendCodeResponseData_data
+/*  Send verification code */
 type User__casdoor__sendCodeResponseData_data struct {
     Code int64 `json:"code,omitempty"`
     Msg string `json:"msg,omitempty"`
@@ -1371,9 +1374,11 @@ type User__casdoor__updateUserInternalInput struct {
 }
 
 type User__casdoor__updateUserResponseData struct {
-    Data User__casdoor__updateUserResponseData_data `json:"data,omitempty"`
+    /* Update an existing user */
+Data User__casdoor__updateUserResponseData_data `json:"data,omitempty"`
 }
-
+// User__casdoor__updateUserResponseData_data
+/*  Update an existing user */
 type User__casdoor__updateUserResponseData_data struct {
     Code int64 `json:"code,omitempty"`
     Msg string `json:"msg,omitempty"`
@@ -1424,19 +1429,17 @@ type User__findManyResponseData struct {
 }
 
 type User__findManyResponseData_data struct {
-    /* 头像 */
-Avatar string `json:"avatar,omitempty"`
+    Avatar string `json:"avatar,omitempty"`
     CountryCode string `json:"countryCode,omitempty"`
-    CreatedAt string `json:"createdAt,omitempty"`
+    CreatedAt string `json:"createdAt"`
     Id int64 `json:"id"`
-    Name string `json:"name"`
+    Name string `json:"name,omitempty"`
     Password string `json:"password,omitempty"`
     PasswordSalt string `json:"passwordSalt,omitempty"`
     PasswordType string `json:"passwordType,omitempty"`
     Phone string `json:"phone,omitempty"`
     Roles []User__findManyResponseData_data_roles `json:"roles"`
-    UserId string `json:"userId,omitempty"`
-    WxUnionid string `json:"wxUnionid,omitempty"`
+    UserId string `json:"userId"`
 }
 
 type User__findManyResponseData_data_roles struct {
@@ -1459,27 +1462,17 @@ type User__findUniqueResponseData struct {
 }
 
 type User__findUniqueResponseData_data struct {
-    /* 头像 */
-Avatar string `json:"avatar,omitempty"`
+    Avatar string `json:"avatar,omitempty"`
     CountryCode string `json:"countryCode,omitempty"`
-    CreatedAt string `json:"createdAt,omitempty"`
+    CreatedAt string `json:"createdAt"`
     Id int64 `json:"id"`
-    Name string `json:"name"`
+    Name string `json:"name,omitempty"`
     Password string `json:"password,omitempty"`
     PasswordSalt string `json:"passwordSalt,omitempty"`
     PasswordType string `json:"passwordType,omitempty"`
     Phone string `json:"phone,omitempty"`
     Roles []string `json:"roles"`
-    UserId string `json:"userId,omitempty"`
-    WxUnionid string `json:"wxUnionid,omitempty"`
-    Wxs []User__findUniqueResponseData_data_wxs `json:"wxs"`
-}
-
-type User__findUniqueResponseData_data_wxs struct {
-    CreatedAt string `json:"createdAt,omitempty"`
-    Openid string `json:"openid"`
-    Platform string `json:"platform,omitempty"`
-    Unionid string `json:"unionid"`
+    UserId string `json:"userId"`
 }
 
 type User__meInput struct {
@@ -1497,13 +1490,12 @@ type User__meResponseData struct {
 
 type User__meResponseData_data struct {
     AreaCodes []string `json:"areaCodes"`
-    /* 头像 */
-Avatar string `json:"avatar,omitempty"`
+    Avatar string `json:"avatar,omitempty"`
     Id int64 `json:"id"`
     Menus []User__meResponseData_data_menus `json:"menus"`
-    Name string `json:"name"`
+    Name string `json:"name,omitempty"`
     Roles []string `json:"roles"`
-    UserId string `json:"userId,omitempty"`
+    UserId string `json:"userId"`
 }
 
 type User__meResponseData_data_menus struct {

@@ -15,7 +15,6 @@ query MyQuery($skip: Int = 0, $take: Int = 10, $name: String, $phone: String, $u
     passwordType: password_type
     phone
     userId: user_id @export(as: "userId")
-    wxUnionid: wx_unionid
     roles: _join @transform(get: "admin_findManyadmin_role") {
       admin_findManyadmin_role(
         where: {admin_role_user: {some: {userId: {equals: $userId}}}}
