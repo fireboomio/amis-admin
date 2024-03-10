@@ -9,7 +9,7 @@
 		"oasFilepath": "system.json",
 		"baseUrl": "http://localhost:9123/api",
 		"headers": {
-      "auth-key": {
+      "X-FB-Authentication": {
         "kind": 1,
         "environmentVariableName": "SYSTEM_AUTH_KEY"
       }
