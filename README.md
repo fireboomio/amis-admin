@@ -125,13 +125,12 @@ _示例数据表_
 - demo_post
 - demo_post_category
 
-_OIDC表(详情见下文)_
+_[OIDC表](https://github.com/fireboomio/yudai-oidc/blob/master/docs/oidc.sql)_
 
 - provider：短信配置表，当前仅支持阿里云短信，若想正常发短信，需要去修改里面的 appid和appscret
 - token：颁发的令牌表
 - user：用户主表
 - usersocial：社交登录表
-- ~userwx：微信登录表，后续要优化~
 - verificationrecord：验证码记录
 
 ### 初始化 mysql容器
@@ -172,6 +171,9 @@ oidc
 pnpm fb --update
 ```
 
+> [!NOTE]  
+> 如果 `9992` 端口未启动，可能是 golang 依赖安装错误，重试该步骤应该就能解决。
+
 2. 启动前端
 
 新开一个窗口执行
@@ -185,7 +187,7 @@ pnpm dev
 
 然后访问： [http://localhost:8080](http://localhost:8080)
 
-超级管理员账户密码：admin/password
+超级管理员账户密码：`admin/password`
 
 可在文件：`backend/.env`，中指定超级管理员的角色码
 
@@ -216,7 +218,8 @@ go run main.go
 
 ```sh
 cd oidc
-./oidc
+
+YUDAI_DB_URL="mysql://root:123456@tcp(localhost:3306)/oidc?charset=utf8mb4&parseTime=True&loc=Local" ./oidc
 ```
 
 **4. 启动前端**
