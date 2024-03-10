@@ -20,18 +20,12 @@ docker ps
 # docker cp init.sql mysql2:/init.sql
 sleep 3
 
-for i in $(seq 1 15); do
-    # 执行你的命令
-     result=$(docker exec -i $CONTAINER_NAME mysql -uroot -p123456 -e "SHOW DATABASES;")
-        if [ -n "$result" ]; then
-            echo "执行成功...."
-            echo "结果: \"$result\""
-            break
-        else
-            echo "执行失败"
-        fi
-    sleep 3
-  done
+# until mysql -h 127.0.0.1 -e "SELECT 1"; do sleep 1; done
+until 
+    docker exec -i $CONTAINER_NAME mysql -uroot -p123456 -e "SELECT 1"; 
+do 
+    sleep 3; 
+done
 
 sleep 1
 # 在容器中执行初始化数据的操作
