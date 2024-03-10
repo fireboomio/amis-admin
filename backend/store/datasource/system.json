@@ -1,20 +1,24 @@
 {
-	"name": "system",
-	"enabled": true,
-	"createTime": "2023-08-25T09:06:20.506588+08:00",
-	"updateTime": "",
-	"deleteTime": "",
-	"kind": 1,
-	"customRest": {
-		"oasFilepath": "system.json",
-		"baseUrl": "http://localhost:9123/api",
-		"headers": {
+  "name": "system",
+  "enabled": true,
+  "createTime": "2023-08-25T09:06:20.506588+08:00",
+  "updateTime": "",
+  "deleteTime": "",
+  "kind": 1,
+  "customRest": {
+    "oasFilepath": "system.json",
+    "baseUrl": "http://localhost:9123/api",
+    "headers": {
       "X-FB-Authentication": {
-        "kind": 1,
-        "environmentVariableName": "SYSTEM_AUTH_KEY"
+        "values": [
+          {
+            "kind": 1,
+            "environmentVariableName": "SYSTEM_AUTH_KEY"
+          }
+        ]
       }
     }
-	},
-	"customGraphql": null,
-	"customDatabase": null
+  },
+  "customGraphql": null,
+  "customDatabase": null
 }
