@@ -8,7 +8,12 @@
 	"customRest": {
 		"oasFilepath": "system.json",
 		"baseUrl": "http://localhost:9123/api",
-		"headers": null
+		"headers": {
+      "auth-key": {
+        "kind": 1,
+        "environmentVariableName": "SYSTEM_AUTH_KEY"
+      }
+    }
 	},
 	"customGraphql": null,
 	"customDatabase": null
