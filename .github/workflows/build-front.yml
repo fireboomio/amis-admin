@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "dev" ]
     paths-ignore:
-      - backend
+      - backend/**
       - .github/workflows/build-fb-data.yml
       - .github/workflows/build-fb-hook.yml
       - README.md
