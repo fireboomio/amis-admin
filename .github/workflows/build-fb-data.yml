@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "dev" ]
     paths:
-      - backend/*
+      - backend/**
       - .github/workflows/build-fb-data.yml
 
 jobs:
