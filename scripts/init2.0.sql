@@ -389,9 +389,9 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 
-INSERT INTO `user` (`id`, `user_id`, `avatar`, `created_at`, `updated_at`, `name`, `password`, `password_salt`, `password_type`, `phone`, `country_code`)
+INSERT INTO `user` (`user_id`, `avatar`, `created_at`, `updated_at`, `name`, `password`, `password_salt`, `password_type`, `phone`, `country_code`)
 VALUES
-	(3212,'82313034-e97d-4c30-8e96-c524a772b530','','2024-01-04 03:25:26','2024-01-17 05:47:08','admin','43eec874a5751fe2f687e00ea0eedad9','ODdGvnwqpH','md5','18888888888','CN');
+	('82313034-e97d-4c30-8e96-c524a772b530','','2024-01-04 03:25:26','2024-01-17 05:47:08','admin','43eec874a5751fe2f687e00ea0eedad9','ODdGvnwqpH','md5','18888888888','CN');
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
