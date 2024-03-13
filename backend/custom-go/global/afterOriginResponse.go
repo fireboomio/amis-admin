@@ -6,6 +6,7 @@ import (
 	"custom-go/pkg/base"
 	"custom-go/pkg/plugins"
 	"github.com/spf13/cast"
+	"github.com/tidwall/gjson"
 	"net/http"
 	"net/url"
 	"sync"
@@ -51,6 +52,9 @@ func recordRequestLog(hook *base.HttpTransportHookRequest, body *plugins.HttpTra
 	}
 	if body.Response.StatusCode != http.StatusOK {
 		logInput.Error = string(body.Response.OriginBody)
+	}
+	if errResult := gjson.GetBytes(body.Response.OriginBody, "errors.0.message"); errResult.Exists() {
+		logInput.Error = errResult.String()
 	}
 	_, _ = latest.Log__createOne.Execute(logInput)
 }
