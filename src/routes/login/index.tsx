@@ -69,7 +69,7 @@ const Login = () => {
                   size: 'large',
                   prefix: <MobileOutlined className={'prefixIcon'} />
                 }}
-                name="mobile"
+                name="phone"
                 placeholder={'手机号'}
                 rules={[
                   {
@@ -97,8 +97,8 @@ const Login = () => {
                   }
                   return '获取验证码'
                 }}
-                phoneName="mobile"
-                name="captcha"
+                phoneName="phone"
+                name="code"
                 rules={[
                   {
                     required: true,
