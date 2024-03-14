@@ -1,4 +1,3 @@
-import { ResponseError } from '@fireboom/client'
 import { message } from 'antd'
 
 import { StoreKey } from '@/constants'
@@ -89,50 +88,21 @@ export const client = createClient({
         }
       }
     }
-    // 处理 function 的返回结构体跟 graphql 不一致的问题
     const clonedResp = response.clone()
-    if (response.status < 300) {
-      try {
-        const clonedBody = await clonedResp.json()
-        // 将某些function结构体转换为graphql一致的结构体
-        const { code, msg } = clonedBody.data.data
-        if (code !== undefined && code !== 200) {
-          message.error(msg)
-          return new Response(
-            new Blob([
-              JSON.stringify({
-                errors: [{ message: msg, code }],
-                data: null
-              })
-            ]),
-            {
-              status: response.status,
-              statusText: response.statusText,
-              headers: response.headers
-            }
-          )
-        }
-      } catch (error) {
-        // do nothing
+    if (!clonedResp.ok) {
+      const text = await clonedResp.text()
+      message.error(text || clonedResp.statusText)
+      return response
+    }
+    try {
+      const clonedBody = await clonedResp.json()
+      const { errors } = clonedBody
+      // 统一处理错误显示
+      if (errors[0].message) {
+        message.error(errors[0].message)
       }
-    } else {
-      if (!clonedResp.ok) {
-        const text = await clonedResp.text()
-        message.error(text || clonedResp.statusText)
-        return response
-      }
-      try {
-        const clonedBody = await clonedResp.json()
-        const { error } = clonedBody.data
-        // 统一处理错误显示
-        if (error instanceof ResponseError) {
-          if (error.message) {
-            message.error(error.message)
-          }
-        }
-      } catch (error) {
-        //
-      }
+    } catch (error) {
+      //
     }
     return response
   },
