@@ -31,19 +31,23 @@ const RolePage = () => {
     {
       title: '描述',
       dataIndex: 'description',
+      width: 150,
+      ellipsis: true,
       search: false
     },
     {
       title: '创建时间',
       dataIndex: 'createdAt',
+      width: 180,
       search: false,
       render: (_, record) => <div>{timeFormat(record.createdAt)}</div>
     },
     {
       title: '更新时间',
       dataIndex: 'updatedAt',
+      width: 180,
       search: false,
-      render: (_, record) => <div>{timeFormat(record.createdAt)}</div>
+      render: (_, record) => <div>{timeFormat(record.updatedAt)}</div>
     },
     {
       title: '操作',
@@ -69,7 +73,6 @@ const RolePage = () => {
           onClick={async () => {
             setBindPermissionDrawerOpen(true)
             setSelectedRole(record)
-            console.log(getGroupedMenus(false, 'id', 'key', 'title'))
           }}
         >
           绑定菜单
@@ -101,7 +104,6 @@ const RolePage = () => {
             } else {
               message.error('删除角色失败')
             }
-            console.log(data, 'role delete one')
           }}
           okText="确定"
           cancelText="取消"
@@ -141,7 +143,7 @@ const RolePage = () => {
         columns={columns}
         rowKey="id"
         actionRef={actionRef}
-        scroll={{ x: 'max-content' }}
+        scroll={{ x: 'fit-content' }}
         rowSelection={{
           selections: [Table.SELECTION_ALL, Table.SELECTION_INVERT],
           onChange(_, selectedRows) {
@@ -165,17 +167,11 @@ const RolePage = () => {
         }}
         toolBarRender={() => [
           <DrawerForm
-            key="drawerform"
+            key="drawerForm"
             open={drawerOpen}
             form={drawerForm}
             title={isEdit ? '编辑角色' : '新增角色'}
-            resize={{
-              onResize() {
-                console.log('resize!')
-              },
-              maxWidth: window.innerWidth * 0.8,
-              minWidth: 300
-            }}
+            width={400}
             trigger={
               <Button type="primary">
                 <PlusOutlined />
@@ -204,9 +200,8 @@ const RolePage = () => {
                 } else {
                   message.error('更新角色失败')
                 }
-                console.log(data, 'role update one')
               } else {
-                const { error, data } = await client.mutate({
+                const { error } = await client.mutate({
                   operationName: 'role/createOne',
                   input: {
                     code: values.code,
@@ -220,13 +215,11 @@ const RolePage = () => {
                 } else {
                   message.error('创建角色失败')
                 }
-                console.log(data, 'role create one')
               }
               // 不返回不会关闭弹框
               return true
             }}
             onOpenChange={async v => {
-              console.log(v)
               if (!v) {
                 setDrawerOpen(false)
                 if (isEdit) {
@@ -296,7 +289,6 @@ const RolePage = () => {
               } else {
                 message.error('删除角色失败')
               }
-              console.log(data, 'role delete many')
             }}
             okText="确定"
             cancelText="取消"
@@ -306,9 +298,10 @@ const RolePage = () => {
         ]}
       ></ProTable>
       <DrawerForm
-        key="bindDrawerform"
+        key="bindDrawerForm"
         form={bindDrawerForm}
         title="绑定菜单"
+        width={400}
         open={bindPermissionDrawerOpen}
         onOpenChange={async v => {
           if (v) {
@@ -319,8 +312,6 @@ const RolePage = () => {
                 id: selectedRole!.id
               }
             })
-            console.log(error, data, 'data----------')
-
             if (!error) {
               setSelectedMenus(data?.data?.menus?.map(item => item.id.toString()) ?? [])
               setHasRoleInfo(false)
@@ -334,8 +325,6 @@ const RolePage = () => {
           }
         }}
         onFinish={async () => {
-          console.log(selectedMenus)
-
           const inputData = [...selectedMenus, ...halfCheckedKeys]?.map((item: string) => ({
             menuId: parseInt(item)
           }))
