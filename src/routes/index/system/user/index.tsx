@@ -130,13 +130,7 @@ const UserPage = () => {
         <DrawerForm
           key="editPasswordDrawer"
           title="修改密码"
-          resize={{
-            onResize() {
-              console.log('resize!')
-            },
-            maxWidth: window.innerWidth * 0.8,
-            minWidth: 300
-          }}
+          width={400}
           trigger={
             <Button
               key="editPassword"
@@ -223,7 +217,6 @@ const UserPage = () => {
       }
     })
     if (!error) {
-      console.log(data?.data?.roles, 'getRolesByUserId')
       setSelectedRoles(data?.data?.roles)
     } else {
       message.error('获取用户信息失败')
@@ -231,7 +224,6 @@ const UserPage = () => {
   }
 
   const onBindRoleChange = (v: string) => {
-    console.log(`checked = ${v}`)
     if (selectedRoles?.includes(v)) {
       setSelectedRoles([...selectedRoles.filter(role => role != v)])
     } else {
@@ -269,12 +261,11 @@ const UserPage = () => {
         rowSelection={{
           selections: [Table.SELECTION_ALL, Table.SELECTION_INVERT],
           onChange(_, selectedRows) {
-            console.log(selectedRows)
             setSelectedIds(selectedRows.map(item => item.userId!))
           }
         }}
         request={async params => {
-          const { error, data } = await client.query({
+                    const { error, data } = await client.query({
             operationName: 'user/findMany',
             input: {
               skip: (params.current! - 1) * params.pageSize!,
@@ -294,13 +285,7 @@ const UserPage = () => {
             open={drawerOpen}
             form={drawerForm}
             title={isEdit ? '编辑' : '新增'}
-            resize={{
-              onResize() {
-                console.log('resize!')
-              },
-              maxWidth: window.innerWidth * 0.8,
-              minWidth: 300
-            }}
+            width={400}
             trigger={
               <Button type="primary">
                 <PlusOutlined />
@@ -313,7 +298,6 @@ const UserPage = () => {
             }}
             submitTimeout={2000}
             onFinish={async values => {
-              console.log(values.name)
               if (isEdit) {
                 const { error } = await client.mutate({
                   operationName: 'user/casdoor/updateUser',
@@ -352,10 +336,10 @@ const UserPage = () => {
               return true
             }}
             onOpenChange={async v => {
-              console.log(v)
               if (!v) {
                 setDrawerOpen(false)
                 if (isEdit) {
+                  setAvatar('')
                   setIsEdit(false)
                 }
               }
@@ -401,7 +385,6 @@ const UserPage = () => {
                     alt="头像"
                   />
                 }
-                // initialValues={user || undefined}
                 onFinish={updateUserAvatar}
               >
                 <ProForm.Item name="avatar" rules={[{ required: true }]} noStyle>
@@ -413,6 +396,7 @@ const UserPage = () => {
           <DrawerForm
             key="bindDrawer"
             title="绑定角色"
+            width={400}
             open={bindDrawerOpen}
             form={bindDrawerForm}
             autoFocusFirstInput
@@ -427,7 +411,6 @@ const UserPage = () => {
               const roles = allRoles
                 ?.filter(role => selectedRoles?.includes(role.code))
                 ?.map(role2 => role2.value)
-              console.log(roles, 'roles')
               const inputData = roles?.map((item: string) => ({
                 userId: selectedUserId,
                 roleId: parseInt(item)
@@ -449,7 +432,7 @@ const UserPage = () => {
             }}
           >
             <ProFormCheckbox.Group name="roles" label="" layout="horizontal">
-              <Row>
+              <Row gutter={[0, 12]}>
                 {allRoles?.map(item => (
                   <Col span={24} key={item.value}>
                     <Checkbox

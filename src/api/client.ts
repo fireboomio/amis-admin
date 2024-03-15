@@ -37,7 +37,7 @@ const S3ProviderData = {
   tengxunyun: {
     useSSL: true,
     bucketName: 'test-1314985928',
-    endpoint: 'cos.ap-nanjing.myqcloud.com/'
+    endpoint: 'cos.ap-nanjing.myqcloud.com'
   }
 }
 
@@ -257,109 +257,109 @@ export type Queries = {
     input?: undefined
     response: api__listPublicResponse
     requiresAuthentication: false
-    
+
   }
   'area/findMany': {
     input: area__findManyInput
     response: area__findManyResponse
     requiresAuthentication: true
-    
+
   }
   'log/findMany': {
     input: log__findManyInput
     response: log__findManyResponse
     requiresAuthentication: false
-    
+
   }
   'menu/findMany': {
     input: menu__findManyInput
     response: menu__findManyResponse
     requiresAuthentication: false
-    
+
   }
   'menu/findMenuByPath': {
     input: menu__findMenuByPathInput
     response: menu__findMenuByPathResponse
     requiresAuthentication: false
-    
+
   }
   'menu/findUnique': {
     input: menu__findUniqueInput
     response: menu__findUniqueResponse
     requiresAuthentication: false
-    
+
   }
   'post/author/findMany': {
     input?: undefined
     response: post__author__findManyResponse
     requiresAuthentication: false
-    
+
   }
   'post/category/findMany': {
     input: post__category__findManyInput
     response: post__category__findManyResponse
     requiresAuthentication: false
-    
+
   }
   'post/category/findUnique': {
     input: post__category__findUniqueInput
     response: post__category__findUniqueResponse
     requiresAuthentication: false
-    
+
   }
   'post/findMany': {
     input: post__findManyInput
     response: post__findManyResponse
     requiresAuthentication: false
-    
+
   }
   'post/findUnique': {
     input: post__findUniqueInput
     response: post__findUniqueResponse
     requiresAuthentication: false
-    
+
   }
   'role/api/findMany': {
     input: role__api__findManyInput
     response: role__api__findManyResponse
     requiresAuthentication: false
-    
+
   }
   'role/findMany': {
     input: role__findManyInput
     response: role__findManyResponse
     requiresAuthentication: false
-    
+
   }
   'role/findUnique': {
     input: role__findUniqueInput
     response: role__findUniqueResponse
     requiresAuthentication: false
-    
+
   }
   'user/count': {
     input?: undefined
     response: user__countResponse
     requiresAuthentication: false
-    
+
   }
   'user/findMany': {
     input: user__findManyInput
     response: user__findManyResponse
     requiresAuthentication: false
-    
+
   }
   'user/findUnique': {
     input: user__findUniqueInput
     response: user__findUniqueResponse
     requiresAuthentication: false
-    
+
   }
   'user/me': {
     input?: undefined
     response: user__meResponse
     requiresAuthentication: true
-    
+
   }
 }
 

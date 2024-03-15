@@ -39,9 +39,10 @@ const AvatarEditor = ({ value, onChange }: AvatarEditorProps) => {
           className="mt-2"
           accept="image/*"
           multiple={false}
+          beforeUpload={() => false}
           fileList={[]}
           onChange={e => {
-            const file = e.file.originFileObj
+            const file = e.fileList?.[0]?.originFileObj
             if (file) {
               setEditingAvatarSrc(file)
             }
