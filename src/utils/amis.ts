@@ -1,12 +1,12 @@
 import type { RendererEnv, RenderOptions } from 'amis'
 import { message, notification } from 'antd'
-import axios from 'axios'
 import _copy from 'copy-to-clipboard'
 import { format, parse } from 'url'
 
 import { StoreKey } from '@/constants'
 
 import { tokenStorage } from './storage'
+import request from './request'
 
 export const theme = 'antd'
 
@@ -58,7 +58,7 @@ export const fetcher: RenderOptions['fetcher'] = ({ url, method, data, config, h
 
   if (method !== 'post' && method !== 'put' && method !== 'patch') {
     let newUrl = customParamsSerializer(url, data)
-    return (axios as any)[method](newUrl, config)
+    return (request as any)[method](newUrl, config)
   } else if (data && data instanceof FormData) {
     // config.headers = config.headers || {};
     // config.headers['Content-Type'] = 'multipart/form-data';
@@ -72,7 +72,7 @@ export const fetcher: RenderOptions['fetcher'] = ({ url, method, data, config, h
     config.headers['Content-Type'] = 'application/json'
   }
 
-  return (axios as any)[method](url, data, config)
+  return (request as any)[method](url, data, config)
 }
 
 export const notify: RendererEnv['notify'] = (type, msg) => {
