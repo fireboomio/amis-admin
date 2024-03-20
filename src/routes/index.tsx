@@ -16,7 +16,7 @@ const pathWhiteList = [Path.Login.toString(), Path.Home.toString(), Path.Forbidd
 export default function Layout() {
   const navigate = useNavigate()
   const {
-    computed: { username, avatar, availableRoutes },
+    computed: { username, avatar, availableRoutes, logged },
     getGroupedMenus,
     logout
   } = useAuth()
@@ -25,6 +25,7 @@ export default function Layout() {
 
   useEffect(() => {
     if (
+      logged &&
       !(
         pathWhiteList.includes(pathname) ||
         pathname.startsWith(Path.Profile) ||
@@ -33,7 +34,7 @@ export default function Layout() {
     ) {
       navigate(Path.Forbidden, { replace: true })
     }
-  }, [availableRoutes, navigate, pathname])
+  }, [availableRoutes, navigate, pathname, logged])
 
   return (
     <AdminLayout
@@ -50,7 +51,7 @@ export default function Layout() {
         src: avatar,
         size: 'small',
         title: username,
-        render: (props, dom) => {
+        render: (_, dom) => {
           return (
             <Dropdown
               menu={{
