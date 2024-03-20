@@ -384,6 +384,21 @@ const MenuPage = () => {
         rowKey="id"
         search={false}
         options={false}
+        toolbar={{
+          title: (
+            <Button
+              style={{ backgroundColor: 'gray' }}
+              key="button"
+              icon={<LineHeightOutlined />}
+              type="primary"
+              onClick={() => {
+                openOrCloseAll()
+              }}
+            >
+              展开/折叠
+            </Button>
+          )
+        }}
         pagination={false}
         actionRef={actionRef}
         scroll={{ x: 'max-content' }}
@@ -427,17 +442,6 @@ const MenuPage = () => {
           >
             <PlusOutlined />
             新增
-          </Button>,
-          <Button
-            style={{ backgroundColor: 'gray' }}
-            key="button"
-            icon={<LineHeightOutlined />}
-            type="primary"
-            onClick={() => {
-              openOrCloseAll()
-            }}
-          >
-            展开/折叠
           </Button>
         ]}
       />
