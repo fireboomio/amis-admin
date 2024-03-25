@@ -1,29 +1,29 @@
 {
-    "enabled": true,
-    "createTime": "",
-    "updateTime": "2023-07-24 09:31:32Z",
-    "deleteTime": "",
-    "name": "tengxunyun",
-    "endpoint": {
-        "kind": 0,
-        "staticVariableContent": "cos.ap-nanjing.myqcloud.com/"
-    },
-    "accessKeyID": {
-        "kind": 1,
-        "environmentVariableName": "AppID"
-    },
-    "secretAccessKey": {
-        "kind": 1,
-        "environmentVariableName": "AppSecret"
-    },
-    "bucketName": {
-        "kind": 0,
-        "staticVariableContent": "test-1314985928"
-    },
-    "bucketLocation": {
-        "kind": 0,
-        "staticVariableContent": "ap-nanjing"
-    },
-    "useSSL": true,
-    "uploadProfiles": null
+  "enabled": true,
+  "createTime": "",
+  "updateTime": "2024-03-25T16:49:44.84107+08:00",
+  "deleteTime": "",
+  "name": "tengxunyun",
+  "endpoint": {
+    "kind": 0,
+    "staticVariableContent": "cos.ap-nanjing.myqcloud.com"
+  },
+  "accessKeyID": {
+    "kind": 1,
+    "environmentVariableName": "AppID"
+  },
+  "secretAccessKey": {
+    "kind": 1,
+    "environmentVariableName": "AppSecret"
+  },
+  "bucketName": {
+    "kind": 0,
+    "staticVariableContent": "test-1314985928"
+  },
+  "bucketLocation": {
+    "kind": 0,
+    "staticVariableContent": "ap-nanjing"
+  },
+  "useSSL": true,
+  "uploadProfiles": null
 }
