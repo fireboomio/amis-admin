@@ -1,7 +1,7 @@
 FROM oven/bun:alpine as builder
 # RUN apk add git
 WORKDIR /app
-COPY package.json ./
+COPY package.json bun.lockb ./
 RUN bun install --production --ignore-scripts
 COPY ./ ./
 RUN bun run build
